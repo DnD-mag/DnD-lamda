@@ -42,5 +42,12 @@ module.exports.uploadToMedium = (event, context, callback) => {
         })
       })
       .catch((err) => callback(null, { body: JSON.stringify(err) }))
+  } else {
+    callback(null, {
+      statusCode: 400,
+      body: JSON.stringify({
+        message: 'bad request. Action not allow.'
+      })
+    })
   }
 };
