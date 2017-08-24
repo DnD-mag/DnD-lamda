@@ -1,0 +1,8 @@
+{
+  "dependencies": {
+    "dotenv": "^4.0.0",
+    "marked": "^0.3.6",
+    "node-uuid": "^1.4.8",
+    "request": "^2.81.0"
+  }
+}
