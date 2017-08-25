@@ -33,7 +33,7 @@ module.exports.uploadToMedium = (event, context, callback) => {
       .then(serializeComments)
       .then(serializedComments => createPostWithPublication(process.env.MEDIUM_PUBLISH_KEY)({
         title: body.issue.title,
-        content: serializedComments
+        content: body.issue.body + '\n' + serializedComments
       }))
       .then(body => {
         callback(null, {

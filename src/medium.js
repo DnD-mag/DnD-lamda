@@ -19,12 +19,12 @@ const createPostWithPublication = (authorization) => (body, options = {}) => {
     markdownRenderer(body.content)
       .then(content => {
         request({
-          url:  API_URL + 'users/' + USER_ID + '/posts',
+          url:  API_URL + 'publications/' + PUBLICATION_ID + '/posts',
           headers: {
             'Authorization': 'Bearer ' + authorization
           },
           method: 'POST',
-          json: Object.assign(mediumSetting, { content })
+          json: Object.assign(mediumSetting, { content: `<h1>${body.title}</h1> ${content}` })
         }, (err, res, body) => err ? reject(err) : resolve(body))
       })
   })
