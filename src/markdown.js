@@ -1,6 +1,6 @@
-const markdown = require('marked');
+const markdown = require("marked");
 const renderer = new markdown.Renderer();
-const codeToGist = require('./codeToGist.js');
+const codeToGist = require("./codeToGist.js");
 renderer.code = (code, lang) => code;
 
 markdown.setOptions({
@@ -9,17 +9,23 @@ markdown.setOptions({
       callback(null, url);
     });
   }
-})
+});
 
-const markdownRenderer = (str) => {
+const markdownRenderer = str => {
   return new Promise(resolve => {
-    markdown(str, {
-      renderer: renderer
-    }, (err, content) => {
-      if (err) { throw err; }
-      resolve(content);
-    })
-  })
-}
+    markdown(
+      str,
+      {
+        renderer: renderer
+      },
+      (err, content) => {
+        if (err) {
+          throw err;
+        }
+        resolve(content);
+      }
+    );
+  });
+};
 
 module.exports = markdownRenderer;

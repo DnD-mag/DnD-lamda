@@ -23,7 +23,6 @@ provider:
   stage: production
   region: ap-northeast-1
 
-
 functions:
   uploadToMedium:
     handler: handler.uploadToMedium
@@ -32,6 +31,12 @@ functions:
           path: /
           method: post
           cors: ture
+  toSlack:
+    handler: handler.toSlack
+    events:
+      - http:
+          path: /slack
+          method: post
 
 #    The following are a few example events you can configure
 #    NOTE: Please make sure to change your handler code to work with those events
